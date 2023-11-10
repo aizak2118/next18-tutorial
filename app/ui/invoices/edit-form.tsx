@@ -15,9 +15,13 @@ export default function EditInvoiceForm({
   invoice,
   customers,
 }: {
-  invoice: InvoiceForm;
+  invoice: InvoiceForm | undefined;
   customers: CustomerField[];
 }) {
+  if (!invoice) {
+    // invoiceがundefinedの場合の処理をここに記述
+    return <div>Invoice not found.</div>;
+  }
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
 
   return (

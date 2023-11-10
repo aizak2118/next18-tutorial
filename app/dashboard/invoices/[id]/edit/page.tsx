@@ -8,6 +8,11 @@ export default async function Page({ params }: { params: { id: string } }) {
     fetchInvoiceById(id),
     fetchCustomers(),
   ]);
+
+  if (!invoice) {
+    return <div>Invoice not found.</div>;
+  }
+
   return (
     <main>
       <Breadcrumbs
